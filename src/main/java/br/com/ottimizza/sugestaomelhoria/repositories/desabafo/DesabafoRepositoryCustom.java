@@ -1,6 +1,5 @@
 package br.com.ottimizza.sugestaomelhoria.repositories.desabafo;
 
-import java.security.Principal;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

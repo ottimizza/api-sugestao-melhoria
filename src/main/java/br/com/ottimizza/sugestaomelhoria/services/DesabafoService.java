@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.DesabafoDTO;
@@ -28,8 +28,8 @@ public class DesabafoService {
 		return repository.findById(desabafoId);
 	}
 	
-	public Page<Desabafo> buscaPorFiltro(DesabafoDTO filtro, Pageable pageable) throws Exception{
-		return repository.fetchAll(filtro, pageable);
+	public Page<Desabafo> buscaPorFiltro(DesabafoDTO filtro, int pageIndex, int pageSize, String authorization) throws Exception{
+		return repository.fetchAll(filtro, PageRequest.of(pageIndex, pageSize));
 	}
 	
 	public String deletaPorId(BigInteger desabafoId) throws Exception{

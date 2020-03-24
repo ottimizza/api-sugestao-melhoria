@@ -1,7 +1,5 @@
 package br.com.ottimizza.sugestaomelhoria.repositories.desabafo;
 
-import java.security.Principal;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -11,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.querydsl.jpa.impl.JPAQuery;
 
-import br.com.ottimizza.sugestaomelhoria.domain.dtos.desabafo.DesabafoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.dtos.DesabafoDTO;
 import br.com.ottimizza.sugestaomelhoria.models.Desabafo;
 import br.com.ottimizza.sugestaomelhoria.models.QDesabafo;
 

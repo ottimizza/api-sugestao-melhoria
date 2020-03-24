@@ -9,7 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.ottimizza.sugestaomelhoria.domain.dtos.desabafo.DesabafoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.dtos.DesabafoDTO;
 import br.com.ottimizza.sugestaomelhoria.models.Desabafo;
 import br.com.ottimizza.sugestaomelhoria.repositories.desabafo.DesabafoRepository;
 

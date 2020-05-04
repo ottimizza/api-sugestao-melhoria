@@ -29,7 +29,7 @@ public class ComentarioController {
 	ComentarioService comentarioService;
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Optional<Comentario>> buscaPorId(@PathVariable("id") BigInteger id) throws Exception {
+	public ResponseEntity<?> buscaPorId(@PathVariable("id") BigInteger id) throws Exception {
 		return ResponseEntity.ok(comentarioService.buscaPorId(id));
 	}
 	
@@ -42,12 +42,12 @@ public class ComentarioController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Comentario> save(@RequestBody Comentario comentario) throws Exception {
+	public ResponseEntity<?> save(@RequestBody Comentario comentario) throws Exception {
 		return ResponseEntity.ok(comentarioService.save(comentario));
 	}
 	
 	@DeleteMapping("{id}")
-	public ResponseEntity<String> delete(@PathVariable("id")BigInteger id) throws Exception {
+	public ResponseEntity<?> delete(@PathVariable("id")BigInteger id) throws Exception {
 		return ResponseEntity.ok(comentarioService.deletaPorId(id));
 	}
 	

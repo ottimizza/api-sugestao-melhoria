@@ -29,12 +29,12 @@ public class VotoController {
 	VotoService votoService;
 
 	@PostMapping
-	public ResponseEntity<Voto> saveVoto(@RequestBody Voto voto) throws Exception {
+	public ResponseEntity<?> saveVoto(@RequestBody Voto voto) throws Exception {
 		return ResponseEntity.ok(votoService.salva(voto));
 	}
 
 	@DeleteMapping("{id}")
-	public ResponseEntity<String> deleteVoto(@PathVariable("id") BigInteger id) throws Exception {
+	public ResponseEntity<?> deleteVoto(@PathVariable("id") BigInteger id) throws Exception {
 		return ResponseEntity.ok(votoService.deletePorId(id));
 	}
 
@@ -47,7 +47,7 @@ public class VotoController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Optional<Voto>> findById(@PathVariable("id")BigInteger id) throws Exception {
+	public ResponseEntity<?> findById(@PathVariable("id")BigInteger id) throws Exception {
 		return ResponseEntity.ok(votoService.buscaPorId(id));
 	}
 }

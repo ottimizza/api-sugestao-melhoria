@@ -1,4 +1,4 @@
-package br.com.ottimizza.sugestaomelhoria.repositories.comentarios;
+package br.com.ottimizza.sugestaomelhoria.repositories.comentario;
 
 import java.math.BigInteger;
 

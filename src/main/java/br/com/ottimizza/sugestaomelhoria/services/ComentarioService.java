@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.ComentarioDTO;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
-import br.com.ottimizza.sugestaomelhoria.repositories.comentarios.ComentarioRepository;
+import br.com.ottimizza.sugestaomelhoria.repositories.comentario.ComentarioRepository;
 
 @Service
 public class ComentarioService {

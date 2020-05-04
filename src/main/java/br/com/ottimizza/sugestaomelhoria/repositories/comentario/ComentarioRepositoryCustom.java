@@ -1,4 +1,4 @@
-package br.com.ottimizza.sugestaomelhoria.repositories.comentarios;
+package br.com.ottimizza.sugestaomelhoria.repositories.comentario;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -30,12 +30,12 @@ public class DesabafoController {
 	DesabafoService desabafoService;
 	
 	@PostMapping
-	public ResponseEntity<Desabafo> saveDesabafo(@RequestBody Desabafo desabafo) throws Exception {
+	public ResponseEntity<?> saveDesabafo(@RequestBody Desabafo desabafo) throws Exception {
 		return ResponseEntity.ok(desabafoService.salva(desabafo));
 	}
 	
 	@DeleteMapping("{id}")
-	public ResponseEntity<String> deleteDesabafo(@PathVariable("id") BigInteger id) throws Exception {
+	public ResponseEntity<?> deleteDesabafo(@PathVariable("id") BigInteger id) throws Exception {
 		return ResponseEntity.ok(desabafoService.deletaPorId(id));
 	}
 	
@@ -48,7 +48,7 @@ public class DesabafoController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Optional<Desabafo>> findById(@PathVariable("id") BigInteger id) throws Exception {
+	public ResponseEntity<?> findById(@PathVariable("id") BigInteger id) throws Exception {
 		return ResponseEntity.ok(desabafoService.buscaPorId(id));
 	}
 	

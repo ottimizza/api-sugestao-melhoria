@@ -1,4 +1,4 @@
-package br.com.ottimizza.sugestaomelhoria.controllers;
+package br.com.ottimizza.sugestaomelhoria.controllers.v1;
 
 import java.math.BigInteger;
 import java.util.Optional;
@@ -22,7 +22,7 @@ import br.com.ottimizza.sugestaomelhoria.models.Voto;
 import br.com.ottimizza.sugestaomelhoria.services.VotoService;
 
 @RestController
-@RequestMapping("/voto")
+@RequestMapping("/api/voto")
 public class VotoController {
 
 	@Inject

@@ -28,7 +28,7 @@ public class DesabafoService {
 		return repository.findById(desabafoId);
 	}
 	
-	public Page<Desabafo> buscaPorFiltro(DesabafoDTO filtro, int pageIndex, int pageSize, String authorization) throws Exception{
+	public Page<Desabafo> buscaPorFiltro(DesabafoDTO filtro, int pageIndex, int pageSize) throws Exception{
 		return repository.fetchAll(filtro, PageRequest.of(pageIndex, pageSize));
 	}
 	

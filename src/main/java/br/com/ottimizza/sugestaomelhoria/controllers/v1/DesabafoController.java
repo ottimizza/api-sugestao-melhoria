@@ -1,4 +1,4 @@
-package br.com.ottimizza.sugestaomelhoria.controllers;
+package br.com.ottimizza.sugestaomelhoria.controllers.v1;
 
 import java.math.BigInteger;
 import java.util.Optional;
@@ -23,7 +23,7 @@ import br.com.ottimizza.sugestaomelhoria.models.Desabafo;
 import br.com.ottimizza.sugestaomelhoria.services.DesabafoService;
 
 @RestController
-@RequestMapping("/desabafo")
+@RequestMapping("/api/desabafo")
 public class DesabafoController {
 
 	@Inject
@@ -42,9 +42,8 @@ public class DesabafoController {
 	@GetMapping
 	public ResponseEntity<?> findDesabafo(@Valid DesabafoDTO filtro, 
 										  @RequestParam(name = "page_index", defaultValue = "0") int pageIndex, 
-										  @RequestParam(name = "page_size", defaultValue = "10") int pageSize, 
-										  @RequestHeader("Authorization") String authorization) throws Exception{
-		return ResponseEntity.ok(desabafoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization));
+										  @RequestParam(name = "page_size", defaultValue = "10") int pageSize) throws Exception{
+		return ResponseEntity.ok(desabafoService.buscaPorFiltro(filtro, pageIndex, pageSize));
 	}
 	
 	@GetMapping("{id}")

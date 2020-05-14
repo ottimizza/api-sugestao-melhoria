@@ -27,7 +27,7 @@ public class ComentarioService {
 		return repository.findById(id);
 	}
 
-	public Page<Comentario> buscaPorFiltro(ComentarioDTO filtro, int pageIndex, int pageSize, String authorization) throws Exception {
+	public Page<Comentario> buscaPorFiltro(ComentarioDTO filtro, int pageIndex, int pageSize) throws Exception {
 		return repository.fetchAll(filtro,  PageRequest.of(pageIndex, pageSize));
 	}
 	

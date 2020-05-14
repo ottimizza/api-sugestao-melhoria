@@ -1,4 +1,4 @@
-package br.com.ottimizza.sugestaomelhoria.controllers;
+package br.com.ottimizza.sugestaomelhoria.controllers.v1;
 
 import java.math.BigInteger;
 
@@ -21,7 +21,7 @@ import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
 
 @RestController
-@RequestMapping("/sugestao")
+@RequestMapping("/api/sugestao")
 public class SugestaoController {
     
     @Inject

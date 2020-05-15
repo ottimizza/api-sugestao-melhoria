@@ -1,13 +1,13 @@
 server:
   servlet:
     context-path: 
-  port: ${PORT:9090}
+  port: ${PORT:4000}
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/sujestao
-    username: postgres
-    password: 123
+    url: jdbc:postgresql://ec2-54-197-48-79.compute-1.amazonaws.com:5432/da6uh7c7i1mfdt
+    username: ciucjrnmmknwwm
+    password: 57f037b240d3eb24c2db1e0f441b9a52a6a34d98f41a7b6b1c77461ff377b3cd
     driver-class-name: org.postgresql.Driver
 
   jpa:

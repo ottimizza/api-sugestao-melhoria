@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.ComentarioDTO;
 import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
@@ -34,9 +35,8 @@ public class ComentarioController {
 	
 	@GetMapping
 	public ResponseEntity<?> buscaPorFiltro(@Valid ComentarioDTO filtro, 
-											@RequestParam(name = "page_index", defaultValue = "0") int pageIndex, 
-											@RequestParam(name = "page_size", defaultValue = "10") int pageSize) throws Exception {
-		return ResponseEntity.ok(new GenericPageableResponse<Comentario>(comentarioService.buscaPorFiltro(filtro,  pageIndex, pageSize)));				
+											@Valid PageCriteria pageCriteria) throws Exception {
+		return ResponseEntity.ok(new GenericPageableResponse<Comentario>(comentarioService.buscaPorFiltro(filtro,  pageCriteria)));				
 	}
 	
 	@PostMapping

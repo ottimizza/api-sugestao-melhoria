@@ -41,7 +41,8 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         if(filter.getNumeroDislikes() != null)                          query.where(sugestao.numeroDislikes.eq(filter.getNumeroDislikes()));
 
 		totalElements = query.fetchCount();
-		
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		return new PageImpl<Sugestao>(query.fetch(), pageable, totalElements);
 	}
 

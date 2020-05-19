@@ -40,6 +40,8 @@ public class DesabafoRepositoryImpl implements DesabafoRepositoryCustom{
 			query.where(desabafo.dataAtualizacao.eq(filter.getDataAtualizacao()));
 		}
 		totalElements = query.fetchCount();
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		
 		return new PageImpl<Desabafo>(query.fetch(), pageable, totalElements);
 	}

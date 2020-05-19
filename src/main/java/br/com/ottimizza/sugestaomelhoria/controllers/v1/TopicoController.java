@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.TopicoDTO;
 import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
@@ -39,11 +40,10 @@ public class TopicoController {
 
 	@GetMapping
 	public ResponseEntity<?> findTopico(@Valid TopicoDTO filtro,
-										@RequestParam(name = "page_index", defaultValue = "0") int pageIndex, 
-										@RequestParam(name = "page_size", defaultValue = "10") int pageSize, 
+										@Valid PageCriteria pageCriteria, 
 										@RequestHeader("Authorization") String authorization,
 										OAuth2Authentication authentication) throws Exception{
-		return ResponseEntity.ok(new GenericPageableResponse<Topico>(topicoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization)));
+		return ResponseEntity.ok(new GenericPageableResponse<Topico>(topicoService.buscaPorFiltro(filtro, pageCriteria, authorization)));
 	}
 	
 	@GetMapping("{id}")

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.ComentarioDTO;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
 import br.com.ottimizza.sugestaomelhoria.repositories.comentario.ComentarioRepository;
@@ -27,8 +28,8 @@ public class ComentarioService {
 		return repository.findById(id);
 	}
 
-	public Page<Comentario> buscaPorFiltro(ComentarioDTO filtro, int pageIndex, int pageSize) throws Exception {
-		return repository.fetchAll(filtro,  PageRequest.of(pageIndex, pageSize));
+	public Page<Comentario> buscaPorFiltro(ComentarioDTO filtro, PageCriteria  pageCriteria) throws Exception {
+		return repository.fetchAll(filtro,  PageCriteria.getPageRequest(pageCriteria));
 	}
 	
 	public String deletaPorId(BigInteger id) throws Exception {

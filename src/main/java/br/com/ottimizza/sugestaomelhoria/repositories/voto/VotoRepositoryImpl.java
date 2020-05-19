@@ -47,6 +47,8 @@ public class VotoRepositoryImpl implements VotoRepositoryCustom{
 			query.where(voto.resultadoAutomacao.eq(filtro.getResultadoAutomacao()));
 		
 		totalElements = query.fetchCount();
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		
 		return new PageImpl<Voto>(query.fetch(), pageable, totalElements);
 	}

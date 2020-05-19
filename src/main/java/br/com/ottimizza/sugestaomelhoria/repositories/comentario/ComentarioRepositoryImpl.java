@@ -38,7 +38,8 @@ public class ComentarioRepositoryImpl implements ComentarioRepositoryCustom{
 			query.where(comentario.dataAtualizacao.eq(filtro.getDataAtualizacao()));
 		
 		totalElements = query.fetchCount();
-		query.orderBy(comentario.dataCriacao.desc());
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		
 		return new PageImpl<Comentario>(query.fetch(), pageable, totalElements);
 	}

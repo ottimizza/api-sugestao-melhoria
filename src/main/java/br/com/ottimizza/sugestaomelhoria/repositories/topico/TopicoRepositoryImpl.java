@@ -38,6 +38,8 @@ public class TopicoRepositoryImpl implements TopicoRepositoryCustom {
 		}
 
 		totalElements = query.fetchCount();
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		return new PageImpl<Topico>(query.fetch(), pageable, totalElements);
 	}
 

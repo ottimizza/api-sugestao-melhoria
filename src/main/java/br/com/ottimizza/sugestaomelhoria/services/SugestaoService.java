@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.SugestaoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.mappers.SugestaoMapper;
 import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.repositories.sugestao.SugestaoRepository;
 
@@ -19,8 +20,9 @@ public class SugestaoService {
     @Inject
     private SugestaoRepository repository;
 
-    public Sugestao salva(Sugestao sugestao) throws Exception{
-        return repository.save(sugestao);
+    public SugestaoDTO salva(SugestaoDTO sugestaoDto) throws Exception{
+    	Sugestao sugestao = SugestaoMapper.fromDto(sugestaoDto);
+        return SugestaoMapper.fromEntity(repository.save(sugestao));
     }
 
     public Optional<Sugestao> buscaPorId(BigInteger sugestaoId) throws Exception{

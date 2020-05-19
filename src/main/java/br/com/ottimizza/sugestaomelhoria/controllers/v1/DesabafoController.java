@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.DesabafoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
+import br.com.ottimizza.sugestaomelhoria.models.Comentario;
 import br.com.ottimizza.sugestaomelhoria.models.Desabafo;
 import br.com.ottimizza.sugestaomelhoria.services.DesabafoService;
 
@@ -43,7 +45,7 @@ public class DesabafoController {
 	public ResponseEntity<?> findDesabafo(@Valid DesabafoDTO filtro, 
 										  @RequestParam(name = "page_index", defaultValue = "0") int pageIndex, 
 										  @RequestParam(name = "page_size", defaultValue = "10") int pageSize) throws Exception{
-		return ResponseEntity.ok(desabafoService.buscaPorFiltro(filtro, pageIndex, pageSize));
+		return ResponseEntity.ok(new GenericPageableResponse<Desabafo>(desabafoService.buscaPorFiltro(filtro, pageIndex, pageSize)));
 	}
 	
 	@GetMapping("{id}")

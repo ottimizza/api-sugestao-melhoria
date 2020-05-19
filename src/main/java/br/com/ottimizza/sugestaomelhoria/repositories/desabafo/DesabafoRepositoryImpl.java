@@ -27,7 +27,7 @@ public class DesabafoRepositoryImpl implements DesabafoRepositoryCustom{
 		
 		if(filter.getId() != null) query.where(desabafo.id.eq(filter.getId()));
 		if(filter.getTexto() != null && filter.getTexto() != "") {
-			query.where(desabafo.texto.eq(filter.getTexto()));
+			query.where(desabafo.texto.contains(filter.getTexto()));
 		}
 		if(filter.getTopicoId() != null) query.where(desabafo.topicoId.eq(filter.getTopicoId()));
 		if(filter.getUsuario() != null && filter.getUsuario() != "") {

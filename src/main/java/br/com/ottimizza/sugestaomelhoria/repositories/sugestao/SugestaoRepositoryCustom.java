@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.SugestaoDTO;
 import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 
-public interface SugestaoRepositoryCustom {
+public interface SugestaoRepositoryCustom { //SugestaoRepositoryImpl
 
     Page<Sugestao> fetchAll(SugestaoDTO filter, Pageable pageable);
     

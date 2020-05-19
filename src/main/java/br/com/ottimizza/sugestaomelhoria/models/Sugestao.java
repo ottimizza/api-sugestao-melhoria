@@ -77,11 +77,11 @@ public class Sugestao {
 	
 	public static class Status{
 		
-		public static final int ABERTO = 1;
+		public static final Short ABERTO = 1;
 		
-		public static final int ARQUIVADO = 2;
+		public static final Short ARQUIVADO = 2;
 		
-		public static final int APROVADO = 3;
+		public static final Short APROVADO = 3;
 	}
 	
 	@PrePersist

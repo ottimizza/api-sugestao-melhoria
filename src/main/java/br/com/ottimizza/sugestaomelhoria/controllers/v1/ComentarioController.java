@@ -1,7 +1,6 @@
 package br.com.ottimizza.sugestaomelhoria.controllers.v1;
 
 import java.math.BigInteger;
-import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.ComentarioDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
 import br.com.ottimizza.sugestaomelhoria.services.ComentarioService;
 
@@ -36,7 +36,7 @@ public class ComentarioController {
 	public ResponseEntity<?> buscaPorFiltro(@Valid ComentarioDTO filtro, 
 											@RequestParam(name = "page_index", defaultValue = "0") int pageIndex, 
 											@RequestParam(name = "page_size", defaultValue = "10") int pageSize) throws Exception {
-		return ResponseEntity.ok(comentarioService.buscaPorFiltro(filtro,  pageIndex, pageSize));				
+		return ResponseEntity.ok(new GenericPageableResponse<Comentario>(comentarioService.buscaPorFiltro(filtro,  pageIndex, pageSize)));				
 	}
 	
 	@PostMapping

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.SugestaoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
+import br.com.ottimizza.sugestaomelhoria.models.Comentario;
 import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
 
@@ -28,7 +30,7 @@ public class SugestaoController {
     SugestaoService sugestaoService;
 
     @PostMapping
-    public ResponseEntity<?> saveSugestao(@RequestBody Sugestao sugestao) throws Exception{
+    public ResponseEntity<?> saveSugestao(@RequestBody SugestaoDTO sugestao) throws Exception{
         return ResponseEntity.ok(sugestaoService.salva(sugestao));
     }   
 
@@ -47,7 +49,7 @@ public class SugestaoController {
                                       @RequestParam(name = "page_index", defaultValue = "0") int pageIndex,
                                       @RequestParam(name = "page_size", defaultValue = "10") int pageSize, 
                                       @RequestHeader("Authorization") String authorization) throws Exception{
-        return ResponseEntity.ok(sugestaoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization));
+        return ResponseEntity.ok(new GenericPageableResponse<Sugestao>(sugestaoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization)));
     }
 
 }

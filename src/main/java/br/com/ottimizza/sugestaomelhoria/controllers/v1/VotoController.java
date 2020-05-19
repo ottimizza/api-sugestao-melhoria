@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.VotoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
+import br.com.ottimizza.sugestaomelhoria.models.Comentario;
 import br.com.ottimizza.sugestaomelhoria.models.Voto;
 import br.com.ottimizza.sugestaomelhoria.services.VotoService;
 
@@ -43,7 +45,7 @@ public class VotoController {
 									  @RequestParam(name = "page_index", defaultValue = "0") int pageIndex,
 									  @RequestParam(name = "page_size", defaultValue = "10") int pageSize,
 									  @RequestHeader("Authorization") String authorization) throws Exception {
-		return ResponseEntity.ok(votoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization));
+		return ResponseEntity.ok(new GenericPageableResponse<Voto>(votoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization)));
 	}
 	
 	@GetMapping("{id}")

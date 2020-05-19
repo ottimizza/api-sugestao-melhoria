@@ -35,6 +35,8 @@ public class SugestaoDTO {
     private Short resultadoSuporte;
     
     private Short resultadoAutomacao;
+    
+    private Short resultadoProdutividade;
 
     private Short status;
 

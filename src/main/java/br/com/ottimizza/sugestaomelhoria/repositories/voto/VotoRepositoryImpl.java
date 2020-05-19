@@ -36,7 +36,7 @@ public class VotoRepositoryImpl implements VotoRepositoryCustom{
 		if(filtro.getDataAtualizacao() != null)
 			query.where(voto.dataAtualizacao.eq(filtro.getDataAtualizacao()));
 		if(filtro.getComentario() != null && filtro.getComentario() != "")
-			query.where(voto.comentario.eq(filtro.getComentario()));
+			query.where(voto.comentario.contains(filtro.getComentario()));
 		if(filtro.getAprovado() != null)
 			query.where(voto.aprovado.eq(filtro.getAprovado()));
 		if(filtro.getResultadoSuporte() != null) 

@@ -29,7 +29,7 @@ public class ComentarioRepositoryImpl implements ComentarioRepositoryCustom{
 		if(filtro.getSugestaoId() != null) 
 			query.where(comentario.sugestaoId.eq(filtro.getSugestaoId()));
 		if(filtro.getTexto() != null && filtro.getTexto() != "")
-			query.where(comentario.texto.contains(filtro.getTexto()));
+			query.where(comentario.texto.containsIgnoreCase(filtro.getTexto()));
 		if(filtro.getUsuario() != null && filtro.getUsuario() != "")
 			query.where(comentario.usuario.eq(filtro.getUsuario()));
 		if(filtro.getDataCriacao() != null)

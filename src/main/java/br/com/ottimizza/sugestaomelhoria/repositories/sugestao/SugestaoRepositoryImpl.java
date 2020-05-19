@@ -30,9 +30,9 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         if(filter.getDataCriacao() != null)                             query.where(sugestao.dataCriacao.eq(filter.getDataAtualizacao()));
         if(filter.getDataAtualizacao() != null)                         query.where(sugestao.dataAtualizacao.eq(filter.getDataAtualizacao())); 
         if(filter.getUsuario() != null && filter.getUsuario() != "")    query.where(sugestao.usuario.eq(filter.getUsuario()));
-        if(filter.getTitulo() != null && filter.getTitulo() != "")      query.where(sugestao.titulo.contains(filter.getTitulo()));
-        if(filter.getDescricaoSugestao() != null)                       query.where(sugestao.descricaoSugestao.contains(filter.getDescricaoSugestao()));
-        if(filter.getProblemaResolvido() != null)                       query.where(sugestao.problemaResolvido.contains(filter.getProblemaResolvido()));
+        if(filter.getTitulo() != null && filter.getTitulo() != "")      query.where(sugestao.titulo.containsIgnoreCase(filter.getTitulo()));
+        if(filter.getDescricaoSugestao() != null)                       query.where(sugestao.descricaoSugestao.containsIgnoreCase(filter.getDescricaoSugestao()));
+        if(filter.getProblemaResolvido() != null)                       query.where(sugestao.problemaResolvido.containsIgnoreCase(filter.getProblemaResolvido()));
         if(filter.getResultadoSuporte() != null)                        query.where(sugestao.resultadoSuporte.eq(filter.getResultadoSuporte()));
         if(filter.getResultadoAutomacao() != null)                      query.where(sugestao.resultadoAutomacao.eq(filter.getResultadoAutomacao()));
         if(filter.getStatus() != null)                                  query.where(sugestao.status.eq(filter.getStatus()));

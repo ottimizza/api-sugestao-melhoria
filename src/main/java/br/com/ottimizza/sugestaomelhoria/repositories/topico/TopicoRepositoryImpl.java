@@ -31,7 +31,7 @@ public class TopicoRepositoryImpl implements TopicoRepositoryCustom {
 			query.where(topico.id.eq(filtro.getId()));
 		}
 		if (filtro.getNome() != null && filtro.getNome() != "") {
-			query.where(topico.nome.contains(filtro.getNome()));
+			query.where(topico.nome.containsIgnoreCase(filtro.getNome()));
 		}
 		if (filtro.getAtivo() != null) {
 			query.where(topico.ativo.eq(filtro.getAtivo()));

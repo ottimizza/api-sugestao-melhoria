@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.ComentarioDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.mappers.SugestaoMapper;
 import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
+import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.services.ComentarioService;
+import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
 
 @RestController
 @RequestMapping("/api/comentario")
@@ -27,6 +29,9 @@ public class ComentarioController {
 	
 	@Inject
 	ComentarioService comentarioService;
+	
+	@Inject
+	SugestaoService sugestaoService;
 	
 	@GetMapping("{id}")
 	public ResponseEntity<?> buscaPorId(@PathVariable("id") BigInteger id) throws Exception {
@@ -41,6 +46,9 @@ public class ComentarioController {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody Comentario comentario) throws Exception {
+		Sugestao sugestao = sugestaoService.buscaPorId(comentario.getSugestaoId()).orElse(null);
+		sugestao.setNumeroComentarios((short) (sugestao.getNumeroComentarios() + 1));
+		sugestaoService.salva(SugestaoMapper.fromEntity(sugestao));
 		return ResponseEntity.ok(comentarioService.save(comentario));
 	}
 	

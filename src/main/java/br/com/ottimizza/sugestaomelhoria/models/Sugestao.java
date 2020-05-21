@@ -42,6 +42,9 @@ public class Sugestao {
 	@Column(name = "data_atualizacao")
 	private LocalDate dataAtualizacao;
 	
+	@Column(name = "user_id", nullable = false)
+	private BigInteger userId;
+
 	@Column(name = "usuario", nullable = false)
 	private String usuario;
 	
@@ -92,4 +95,5 @@ public class Sugestao {
         }      
         this.dataAtualizacao = LocalDate.now();
     }
+	
 }

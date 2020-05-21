@@ -3,6 +3,8 @@ package br.com.ottimizza.sugestaomelhoria.domain.dtos;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +18,8 @@ public class VotoDTO {
 	private BigInteger id;
 
 	private BigInteger sugestaoId;
+
+	private BigInteger userId;
 
 	private String usuario;
 

@@ -30,6 +30,7 @@ public class DesabafoRepositoryImpl implements DesabafoRepositoryCustom{
 			query.where(desabafo.texto.containsIgnoreCase(filter.getTexto()));
 		}
 		if(filter.getTopicoId() != null) query.where(desabafo.topicoId.eq(filter.getTopicoId()));
+		if(filter.getUserId() != null)   query.where(desabafo.userId.eq(filter.getUserId()));
 		if(filter.getUsuario() != null && filter.getUsuario() != "") {
 			query.where(desabafo.usuario.eq(filter.getUsuario()));
 		}

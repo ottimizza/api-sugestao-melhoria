@@ -29,6 +29,8 @@ public class VotoRepositoryImpl implements VotoRepositoryCustom{
 			query.where(voto.id.eq(filtro.getId()));
 		if(filtro.getSugestaoId() != null)
 			query.where(voto.sugestaoId.eq(filtro.getSugestaoId()));
+		if(filtro.getUserId() != null) 
+			query.where(voto.userId.eq(filtro.getUserId()));
 		if(filtro.getUsuario() != null && filtro.getUsuario() != "")
 			query.where(voto.usuario.eq(filtro.getUsuario()));
 		if(filtro.getDataCriacao() != null)

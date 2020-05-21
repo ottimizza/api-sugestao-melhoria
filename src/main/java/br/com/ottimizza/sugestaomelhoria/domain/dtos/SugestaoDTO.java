@@ -24,6 +24,8 @@ public class SugestaoDTO {
 
     private LocalDate dataAtualizacao;
 
+    private BigInteger userId;
+    
     private String usuario;
 
     private String titulo;

@@ -21,6 +21,8 @@ public class VotoService {
 	VotoRepository repository;
 	
 	public Voto salva(Voto voto) throws Exception {
+		
+		
 		return repository.save(voto);
 	}
 	
@@ -39,6 +41,15 @@ public class VotoService {
 		catch(Exception ex) {
 			ex.getMessage();
 		}
-		return "Voto apagado com sucesso";
+		return "Voto apagado com sucesso!";
+	}
+	
+	public String deletePorUserId(BigInteger userId) throws Exception {
+		try {
+			repository.deletePorUserId(userId);
+		}catch(Exception ex) {
+			ex.getMessage();
+		}
+		return "Voto apagado com sucesso!";
 	}
 }

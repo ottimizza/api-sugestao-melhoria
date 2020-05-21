@@ -32,7 +32,7 @@ public class SugestaoService {
     }
 
     public Page<Sugestao> buscaPorFiltro(SugestaoDTO filtro, PageCriteria pageCriteria, String authorization) throws Exception{
-        return repository.fetchAll(filtro, PageCriteria.getPageRequest(pageCriteria));
+        return repository.fetchAll(filtro, pageCriteria);
     }
 
     public String deletaPorId(BigInteger sugestaoId) throws Exception{

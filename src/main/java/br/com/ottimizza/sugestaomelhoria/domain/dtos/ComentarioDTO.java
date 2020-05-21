@@ -16,6 +16,8 @@ public class ComentarioDTO {
 
 	private BigInteger id;
 
+	private BigInteger userId;
+	
 	private String usuario;
 
 	private BigInteger sugestaoId;

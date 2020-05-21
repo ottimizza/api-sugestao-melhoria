@@ -17,8 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.VotoDTO;
+import br.com.ottimizza.sugestaomelhoria.domain.mappers.SugestaoMapper;
+import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
+import br.com.ottimizza.sugestaomelhoria.models.Comentario;
+import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.models.Voto;
+import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
 import br.com.ottimizza.sugestaomelhoria.services.VotoService;
 
 @RestController
@@ -27,9 +33,16 @@ public class VotoController {
 
 	@Inject
 	VotoService votoService;
+	
+	@Inject
+	SugestaoService sugestaoService;
 
 	@PostMapping
 	public ResponseEntity<?> saveVoto(@RequestBody Voto voto) throws Exception {
+		Sugestao sugestao = sugestaoService.buscaPorId(voto.getSugestaoId()).orElse(null);
+		if(voto.getAprovado()) sugestao.setNumeroLikes((short) (sugestao.getNumeroLikes() + 1));
+		else 				   sugestao.setNumeroDislikes((short) (sugestao.getNumeroDislikes() + 1));
+		sugestaoService.salva(SugestaoMapper.fromEntity(sugestao)); 
 		return ResponseEntity.ok(votoService.salva(voto));
 	}
 
@@ -40,14 +53,18 @@ public class VotoController {
 
 	@GetMapping
 	public ResponseEntity<?> findVoto(@Valid VotoDTO filtro,
-									  @RequestParam(name = "page_index", defaultValue = "0") int pageIndex,
-									  @RequestParam(name = "page_size", defaultValue = "10") int pageSize,
+									  @Valid PageCriteria pageCriteria,
 									  @RequestHeader("Authorization") String authorization) throws Exception {
-		return ResponseEntity.ok(votoService.buscaPorFiltro(filtro, pageIndex, pageSize, authorization));
+		return ResponseEntity.ok(new GenericPageableResponse<Voto>(votoService.buscaPorFiltro(filtro, pageCriteria, authorization)));
 	}
 	
 	@GetMapping("{id}")
 	public ResponseEntity<?> findById(@PathVariable("id")BigInteger id) throws Exception {
 		return ResponseEntity.ok(votoService.buscaPorId(id));
+	}
+	
+	@DeleteMapping("/user/{id}")
+	public ResponseEntity<?> deleteVotoPorUserId(@PathVariable("id") BigInteger id) throws Exception {
+		return ResponseEntity.ok(votoService.deletePorUserId(id));
 	}
 }

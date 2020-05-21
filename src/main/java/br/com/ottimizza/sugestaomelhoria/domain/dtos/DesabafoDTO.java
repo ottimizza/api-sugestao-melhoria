@@ -24,6 +24,8 @@ public class DesabafoDTO {
 	
 	private LocalDate dataAtualizacao;
 	
+	private BigInteger userId;
+	
 	private String usuario;
 	
 	private Date dataRetornoCliente;

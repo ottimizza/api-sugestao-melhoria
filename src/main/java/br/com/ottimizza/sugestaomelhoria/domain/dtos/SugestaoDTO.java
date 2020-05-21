@@ -24,6 +24,8 @@ public class SugestaoDTO {
 
     private LocalDate dataAtualizacao;
 
+    private BigInteger userId;
+    
     private String usuario;
 
     private String titulo;
@@ -35,6 +37,8 @@ public class SugestaoDTO {
     private Short resultadoSuporte;
     
     private Short resultadoAutomacao;
+    
+    private Short resultadoProdutividade;
 
     private Short status;
 

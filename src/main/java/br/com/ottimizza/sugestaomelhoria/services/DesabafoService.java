@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.DesabafoDTO;
 import br.com.ottimizza.sugestaomelhoria.models.Desabafo;
 import br.com.ottimizza.sugestaomelhoria.repositories.desabafo.DesabafoRepository;
@@ -28,8 +29,8 @@ public class DesabafoService {
 		return repository.findById(desabafoId);
 	}
 	
-	public Page<Desabafo> buscaPorFiltro(DesabafoDTO filtro, int pageIndex, int pageSize) throws Exception{
-		return repository.fetchAll(filtro, PageRequest.of(pageIndex, pageSize));
+	public Page<Desabafo> buscaPorFiltro(DesabafoDTO filtro, PageCriteria pageCriteria, String auhtorization) throws Exception{
+		return repository.fetchAll(filtro, PageCriteria.getPageRequest(pageCriteria));
 	}
 	
 	public String deletaPorId(BigInteger desabafoId) throws Exception{

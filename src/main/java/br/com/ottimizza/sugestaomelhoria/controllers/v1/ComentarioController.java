@@ -46,9 +46,6 @@ public class ComentarioController {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody Comentario comentario) throws Exception {
-		Sugestao sugestao = sugestaoService.buscaPorId(comentario.getSugestaoId()).orElse(null);
-		sugestao.setNumeroComentarios((short) (sugestao.getNumeroComentarios() + 1));
-		sugestaoService.salva(SugestaoMapper.fromEntity(sugestao));
 		return ResponseEntity.ok(comentarioService.save(comentario));
 	}
 	

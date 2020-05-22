@@ -17,8 +17,17 @@ public interface VotoRepository extends JpaRepository<Voto, BigInteger>, VotoRep
 
 	
 	 @Modifying
-	    @Transactional
-	    @Query("delete from Voto v where v.userId = :userId")
-	    Integer deletePorUserId(@Param("userId") BigInteger userId);
+	 @Transactional
+	 @Query("delete from Voto v where v.userId = :userId and v.id = :votoId")
+	 Integer deletePorUserId(@Param("userId") BigInteger userId, @Param("votoId") BigInteger votoId);
+	
+	 
+	 @Query("SELECT v.aprovado 		                   "
+		 	  + "FROM Voto v      		  		       "
+		 	  + "WHERE v.userId     = :userId 	 	   "
+		 	  + "AND   v.sugestaoId = :sugestaoId	   ")
+	 boolean findByUserIdAndSugestaoId(@Param("userId") BigInteger userId, @Param("sugestaoId") BigInteger sugestaoId);
+		 
+	
 	
 }

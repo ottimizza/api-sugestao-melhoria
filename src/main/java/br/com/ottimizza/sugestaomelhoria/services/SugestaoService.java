@@ -6,8 +6,6 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
@@ -31,8 +29,8 @@ public class SugestaoService {
         return repository.findById(sugestaoId);
     }
 
-    public Page<Sugestao> buscaPorFiltro(SugestaoDTO filtro, PageCriteria pageCriteria, String authorization) throws Exception{
-        return repository.fetchAll(filtro, pageCriteria);
+    public Page<SugestaoDTO> buscaPorFiltro(SugestaoDTO filtro, PageCriteria pageCriteria, String authorization) throws Exception{
+    	return repository.fetchAll(filtro, pageCriteria);
     }
 
     public String deletaPorId(BigInteger sugestaoId) throws Exception{

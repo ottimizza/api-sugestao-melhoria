@@ -47,7 +47,7 @@ public class SugestaoController {
     public ResponseEntity<?> fetchAll(@Valid SugestaoDTO filtro,
     		 						  @Valid PageCriteria pageCriteria, 
                                       @RequestHeader("Authorization") String authorization) throws Exception{
-        return ResponseEntity.ok(new GenericPageableResponse<Sugestao>(sugestaoService.buscaPorFiltro(filtro, pageCriteria, authorization)));
+        return ResponseEntity.ok(new GenericPageableResponse<SugestaoDTO>(sugestaoService.buscaPorFiltro(filtro, pageCriteria, authorization)));
     }
 
 }

@@ -124,6 +124,14 @@
 			<version>2.1.3.RELEASE</version>
 		</dependency>
 		
+		<!-- JSON Parsering -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+			<type>jar</type>
+		</dependency>
+		
 
 	</dependencies>
 

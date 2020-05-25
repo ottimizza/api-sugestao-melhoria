@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +50,8 @@ public class VotoService {
 		return repository.fetchAll(filtro, PageCriteria.getPageRequest(pageCriteria));
 	}
 	
-	public String deletePorId(BigInteger id) throws Exception {
+	public JSONObject deletePorId(BigInteger id) throws Exception {
+		JSONObject response = new JSONObject();
 		try {
 			Voto voto = repository.findById(id).get();
 			Sugestao sugestao = sugestaoRepository.findById(voto.getSugestaoId()).get();
@@ -64,14 +66,19 @@ public class VotoService {
 				sugestaoRepository.save(sugestao);
 			}
 			repository.deleteById(id);
+			response.put("status", "sucess");
+            response.put("message", "Voto excluido com sucesso!");
 		}
 		catch(Exception ex) {
 			ex.getMessage();
+			response.put("status", "Error");
+            response.put("message", "Houve um problema ao excluir!");
 		}
-		return "Voto apagado com sucesso!";
+		return response;
 	}
 	
-	public String deletePorUserId(BigInteger userId, BigInteger sugestaoId) throws Exception {
+	public JSONObject deletePorUserId(BigInteger userId, BigInteger sugestaoId) throws Exception {
+		JSONObject response = new JSONObject();
 		try {
 			Voto voto = repository.findVotoByUserIdAndSugestaoId(userId, sugestaoId);
 			Sugestao sugestao = sugestaoRepository.findById(sugestaoId).get();
@@ -86,9 +93,13 @@ public class VotoService {
 				sugestaoRepository.save(sugestao);
 			}
 			repository.deleteById(voto.getId());
+			response.put("status", "sucess");
+            response.put("message", "Voto excluido com sucesso!");
 		}catch(Exception ex) {
 			ex.getMessage();
+			response.put("status", "Error");
+            response.put("message", "Houve um problema ao excluir!");
 		}
-		return "Voto apagado com sucesso!";
+		return response;
 	}
 }

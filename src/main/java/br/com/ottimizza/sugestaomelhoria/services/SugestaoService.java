@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -33,13 +34,18 @@ public class SugestaoService {
     	return repository.fetchAll(filtro, pageCriteria);
     }
 
-    public String deletaPorId(BigInteger sugestaoId) throws Exception{
-        try{
+    public JSONObject deletaPorId(BigInteger sugestaoId) throws Exception{
+    	JSONObject response = new JSONObject();
+    	try{
             repository.deleteById(sugestaoId);
+            response.put("status", "sucess");
+            response.put("message", "Voto excluido com sucesso!");
         }catch(Exception e){
             e.getMessage();
+            response.put("status", "Error");
+            response.put("message", "Houve um problema ao excluir!");
         }
-        return "Apagado com sucesso";
+        return response;
     }
 
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +41,8 @@ public class ComentarioService {
 		return repository.fetchAll(filtro,  PageCriteria.getPageRequest(pageCriteria));
 	}
 	
-	public String deletaPorId(BigInteger id) throws Exception {
+	public JSONObject deletaPorId(BigInteger id) throws Exception {
+		JSONObject response = new JSONObject();
 		try{
 			Comentario comentario = repository.findById(id).get();
 			Sugestao sugestao = sugestaoRepository.findById(comentario.getSugestaoId()).get();
@@ -48,11 +50,15 @@ public class ComentarioService {
 			sugestao.setNumeroComentarios((short) (numComentario - 1));
 			sugestaoRepository.save(sugestao);
 			repository.deleteById(id);
+			response.put("status", "sucess");
+            response.put("message", "Voto excluido com sucesso!");
 		}
 		catch(Exception ex){
 			ex.getMessage();
+			response.put("status", "Error");
+            response.put("message", "Houve um problema ao excluir!");
 		}
-		return "Comentario apagado com sucesso!";
+		return response;
 	}
 
 }

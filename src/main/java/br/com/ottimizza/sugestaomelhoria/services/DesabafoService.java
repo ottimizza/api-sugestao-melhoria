@@ -39,7 +39,7 @@ public class DesabafoService {
 		try{
 			repository.deleteById(desabafoId);
 			response.put("status", "sucess");
-            response.put("message", "Voto excluido com sucesso!");
+            response.put("message", "Desabafo excluido com sucesso!");
 		}catch(Exception ex) {
 			ex.getMessage();
 			response.put("status", "Error");

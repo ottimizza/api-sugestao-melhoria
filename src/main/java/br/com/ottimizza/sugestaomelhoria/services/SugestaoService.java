@@ -39,7 +39,7 @@ public class SugestaoService {
     	try{
             repository.deleteById(sugestaoId);
             response.put("status", "sucess");
-            response.put("message", "Voto excluido com sucesso!");
+            response.put("message", "Sugestao excluida com sucesso!");
         }catch(Exception e){
             e.getMessage();
             response.put("status", "Error");

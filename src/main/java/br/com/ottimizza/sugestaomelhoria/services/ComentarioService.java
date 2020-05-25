@@ -51,7 +51,7 @@ public class ComentarioService {
 			sugestaoRepository.save(sugestao);
 			repository.deleteById(id);
 			response.put("status", "sucess");
-            response.put("message", "Voto excluido com sucesso!");
+            response.put("message", "Comentario excluido com sucesso!");
 		}
 		catch(Exception ex){
 			ex.getMessage();

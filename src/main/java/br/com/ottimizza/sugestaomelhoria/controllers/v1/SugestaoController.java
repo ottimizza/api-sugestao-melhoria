@@ -35,7 +35,7 @@ public class SugestaoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletaSugestao(@PathVariable("id") BigInteger id) throws Exception{
-        return ResponseEntity.ok(sugestaoService.deletaPorId(id));
+        return ResponseEntity.ok(sugestaoService.deletaPorId(id).toString());
     }
 
     @GetMapping("/{id}")

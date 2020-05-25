@@ -51,7 +51,7 @@ public class ComentarioController {
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")BigInteger id) throws Exception {
-		return ResponseEntity.ok(comentarioService.deletaPorId(id));
+		return ResponseEntity.ok(comentarioService.deletaPorId(id).toString());
 	}
 	
 

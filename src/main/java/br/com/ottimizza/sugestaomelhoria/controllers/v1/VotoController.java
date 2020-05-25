@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +40,7 @@ public class VotoController {
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteVoto(@PathVariable("id") BigInteger id) throws Exception {
-		return ResponseEntity.ok(votoService.deletePorId(id));
+		return ResponseEntity.ok(votoService.deletePorId(id).toString());
 	}
 
 	@GetMapping
@@ -56,6 +57,6 @@ public class VotoController {
 	
 	@DeleteMapping("/{idSugestao}/{idUsuario}")
 	public ResponseEntity<?> deleteVotoPorUserId(@PathVariable("idUsuario") BigInteger idUsuario, @PathVariable("idSugestao") BigInteger sugestaoId) throws Exception {
-		return ResponseEntity.ok(votoService.deletePorUserId(idUsuario, sugestaoId));
+		return ResponseEntity.ok(votoService.deletePorUserId(idUsuario, sugestaoId).toString());
 	}
 }

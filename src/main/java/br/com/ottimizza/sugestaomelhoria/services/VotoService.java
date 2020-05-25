@@ -71,11 +71,11 @@ public class VotoService {
 		return "Voto apagado com sucesso!";
 	}
 	
-	public String deletePorUserId(BigInteger userId, BigInteger votoId) throws Exception {
+	public String deletePorUserId(BigInteger userId, BigInteger sugestaoId) throws Exception {
 		try {
-			Voto voto = repository.findById(votoId).get();
-			Sugestao sugestao = sugestaoRepository.findById(voto.getSugestaoId()).get();
-			Short numLikes = sugestao.getNumeroLikes();
+			Voto voto = repository.findVotoByUserIdAndSugestaoId(userId, sugestaoId);
+			Sugestao sugestao = sugestaoRepository.findById(sugestaoId).get();
+			Short numLikes 	  = sugestao.getNumeroLikes();
 			Short numDislikes = sugestao.getNumeroDislikes();
 			if(voto.getAprovado() == true) {
 				sugestao.setNumeroLikes((short) (numLikes - 1));
@@ -85,7 +85,7 @@ public class VotoService {
 				sugestao.setNumeroDislikes((short) (numDislikes - 1));
 				sugestaoRepository.save(sugestao);
 			}
-			repository.deletePorUserId(userId, votoId);
+			repository.deleteById(voto.getId());
 		}catch(Exception ex) {
 			ex.getMessage();
 		}

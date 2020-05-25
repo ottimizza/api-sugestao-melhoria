@@ -54,8 +54,8 @@ public class VotoController {
 		return ResponseEntity.ok(votoService.buscaPorId(id));
 	}
 	
-	@DeleteMapping("/{idVoto}/{id}")
-	public ResponseEntity<?> deleteVotoPorUserId(@PathVariable("id") BigInteger id, @PathVariable("idVoto") BigInteger votoId) throws Exception {
-		return ResponseEntity.ok(votoService.deletePorUserId(id, votoId));
+	@DeleteMapping("/{idSugestao}/{idUsuario}")
+	public ResponseEntity<?> deleteVotoPorUserId(@PathVariable("idUsuario") BigInteger idUsuario, @PathVariable("idSugestao") BigInteger sugestaoId) throws Exception {
+		return ResponseEntity.ok(votoService.deletePorUserId(idUsuario, sugestaoId));
 	}
 }

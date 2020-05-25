@@ -61,12 +61,12 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
 		List<SugestaoDTO> sugestoes = query.fetch().stream().map(SugestaoMapper::fromEntity).collect(Collectors.toCollection(ArrayList::new));
 		try{
     		for(SugestaoDTO sugestao : sugestoes) {
-    			boolean deuLike = votoRepository.findByUserIdAndSugestaoId(filter.getUserId(), sugestao.getId());
-    			if(deuLike = true) {
+    			Boolean deuLike = votoRepository.findByUserIdAndSugestaoId(filter.getUserId(), sugestao.getId());
+    			if(deuLike == true) {
     				sugestao.setDeuLike(true);
     				sugestao.setDeuDislike(false);
     			}
-    			else if(deuLike = false){
+    			else if(deuLike == false){
     				sugestao.setDeuLike(false);
     				sugestao.setDeuDislike(true);
     			}

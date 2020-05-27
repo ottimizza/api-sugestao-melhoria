@@ -46,15 +46,12 @@ public class ComentarioController {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody Comentario comentario) throws Exception {
-		Sugestao sugestao = sugestaoService.buscaPorId(comentario.getSugestaoId()).orElse(null);
-		sugestao.setNumeroComentarios((short) (sugestao.getNumeroComentarios() + 1));
-		sugestaoService.salva(SugestaoMapper.fromEntity(sugestao));
 		return ResponseEntity.ok(comentarioService.save(comentario));
 	}
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")BigInteger id) throws Exception {
-		return ResponseEntity.ok(comentarioService.deletaPorId(id));
+		return ResponseEntity.ok(comentarioService.deletaPorId(id).toString());
 	}
 	
 

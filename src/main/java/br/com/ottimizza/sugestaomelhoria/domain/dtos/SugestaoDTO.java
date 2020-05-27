@@ -47,4 +47,8 @@ public class SugestaoDTO {
     private Short numeroLikes;
 
     private Short numeroDislikes;
+    
+    private boolean deuLike;
+    
+    private boolean deuDislike;
 }

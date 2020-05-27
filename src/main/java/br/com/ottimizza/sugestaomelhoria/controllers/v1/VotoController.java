@@ -1,11 +1,11 @@
 package br.com.ottimizza.sugestaomelhoria.controllers.v1;
 
 import java.math.BigInteger;
-import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.VotoDTO;
-import br.com.ottimizza.sugestaomelhoria.domain.mappers.SugestaoMapper;
 import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
-import br.com.ottimizza.sugestaomelhoria.models.Comentario;
-import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.models.Voto;
 import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
 import br.com.ottimizza.sugestaomelhoria.services.VotoService;
@@ -39,16 +35,12 @@ public class VotoController {
 
 	@PostMapping
 	public ResponseEntity<?> saveVoto(@RequestBody Voto voto) throws Exception {
-		Sugestao sugestao = sugestaoService.buscaPorId(voto.getSugestaoId()).orElse(null);
-		if(voto.getAprovado()) sugestao.setNumeroLikes((short) (sugestao.getNumeroLikes() + 1));
-		else 				   sugestao.setNumeroDislikes((short) (sugestao.getNumeroDislikes() + 1));
-		sugestaoService.salva(SugestaoMapper.fromEntity(sugestao)); 
 		return ResponseEntity.ok(votoService.salva(voto));
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteVoto(@PathVariable("id") BigInteger id) throws Exception {
-		return ResponseEntity.ok(votoService.deletePorId(id));
+		return ResponseEntity.ok(votoService.deletePorId(id).toString());
 	}
 
 	@GetMapping
@@ -63,8 +55,8 @@ public class VotoController {
 		return ResponseEntity.ok(votoService.buscaPorId(id));
 	}
 	
-	@DeleteMapping("/user/{id}")
-	public ResponseEntity<?> deleteVotoPorUserId(@PathVariable("id") BigInteger id) throws Exception {
-		return ResponseEntity.ok(votoService.deletePorUserId(id));
+	@DeleteMapping("/{idSugestao}/{idUsuario}")
+	public ResponseEntity<?> deleteVotoPorUserId(@PathVariable("idUsuario") BigInteger idUsuario, @PathVariable("idSugestao") BigInteger sugestaoId) throws Exception {
+		return ResponseEntity.ok(votoService.deletePorUserId(idUsuario, sugestaoId).toString());
 	}
 }

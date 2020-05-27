@@ -39,7 +39,7 @@ public class DesabafoController {
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteDesabafo(@PathVariable("id") BigInteger id) throws Exception {
-		return ResponseEntity.ok(desabafoService.deletaPorId(id));
+		return ResponseEntity.ok(desabafoService.deletaPorId(id).toString());
 	}
 	
 	@GetMapping

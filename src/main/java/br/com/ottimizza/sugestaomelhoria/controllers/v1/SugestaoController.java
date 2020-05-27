@@ -35,7 +35,7 @@ public class SugestaoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletaSugestao(@PathVariable("id") BigInteger id) throws Exception{
-        return ResponseEntity.ok(sugestaoService.deletaPorId(id));
+        return ResponseEntity.ok(sugestaoService.deletaPorId(id).toString());
     }
 
     @GetMapping("/{id}")
@@ -47,7 +47,7 @@ public class SugestaoController {
     public ResponseEntity<?> fetchAll(@Valid SugestaoDTO filtro,
     		 						  @Valid PageCriteria pageCriteria, 
                                       @RequestHeader("Authorization") String authorization) throws Exception{
-        return ResponseEntity.ok(new GenericPageableResponse<Sugestao>(sugestaoService.buscaPorFiltro(filtro, pageCriteria, authorization)));
+        return ResponseEntity.ok(new GenericPageableResponse<SugestaoDTO>(sugestaoService.buscaPorFiltro(filtro, pageCriteria, authorization)));
     }
 
 }

@@ -53,6 +53,6 @@ public class TopicoController {
 	
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> deleteTopico(@PathVariable("id") BigInteger id) throws Exception{
-		return ResponseEntity.ok(topicoService.deletaPorId(id));
+		return ResponseEntity.ok(topicoService.deletaPorId(id).toString());
 	}
 }

@@ -15,14 +15,14 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "sugestoes")
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class Sugestao {
@@ -42,6 +42,9 @@ public class Sugestao {
 	@Column(name = "data_atualizacao")
 	private LocalDate dataAtualizacao;
 	
+	@Column(name = "user_id", nullable = false)
+	private BigInteger userId;
+
 	@Column(name = "usuario", nullable = false)
 	private String usuario;
 	
@@ -77,11 +80,11 @@ public class Sugestao {
 	
 	public static class Status{
 		
-		public static final int ABERTO = 1;
+		public static final Short ABERTO = 1;
 		
-		public static final int ARQUIVADO = 2;
+		public static final Short ARQUIVADO = 2;
 		
-		public static final int APROVADO = 3;
+		public static final Short APROVADO = 3;
 	}
 	
 	@PrePersist
@@ -92,4 +95,5 @@ public class Sugestao {
         }      
         this.dataAtualizacao = LocalDate.now();
     }
+	
 }

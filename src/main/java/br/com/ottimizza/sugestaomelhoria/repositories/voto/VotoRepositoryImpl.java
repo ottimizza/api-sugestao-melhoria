@@ -29,6 +29,8 @@ public class VotoRepositoryImpl implements VotoRepositoryCustom{
 			query.where(voto.id.eq(filtro.getId()));
 		if(filtro.getSugestaoId() != null)
 			query.where(voto.sugestaoId.eq(filtro.getSugestaoId()));
+		if(filtro.getUserId() != null) 
+			query.where(voto.userId.eq(filtro.getUserId()));
 		if(filtro.getUsuario() != null && filtro.getUsuario() != "")
 			query.where(voto.usuario.eq(filtro.getUsuario()));
 		if(filtro.getDataCriacao() != null)
@@ -36,7 +38,7 @@ public class VotoRepositoryImpl implements VotoRepositoryCustom{
 		if(filtro.getDataAtualizacao() != null)
 			query.where(voto.dataAtualizacao.eq(filtro.getDataAtualizacao()));
 		if(filtro.getComentario() != null && filtro.getComentario() != "")
-			query.where(voto.comentario.eq(filtro.getComentario()));
+			query.where(voto.comentario.containsIgnoreCase(filtro.getComentario()));
 		if(filtro.getAprovado() != null)
 			query.where(voto.aprovado.eq(filtro.getAprovado()));
 		if(filtro.getResultadoSuporte() != null) 
@@ -47,6 +49,8 @@ public class VotoRepositoryImpl implements VotoRepositoryCustom{
 			query.where(voto.resultadoAutomacao.eq(filtro.getResultadoAutomacao()));
 		
 		totalElements = query.fetchCount();
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		
 		return new PageImpl<Voto>(query.fetch(), pageable, totalElements);
 	}

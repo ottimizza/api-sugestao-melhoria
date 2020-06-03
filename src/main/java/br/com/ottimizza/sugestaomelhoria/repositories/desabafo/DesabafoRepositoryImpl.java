@@ -27,9 +27,10 @@ public class DesabafoRepositoryImpl implements DesabafoRepositoryCustom{
 		
 		if(filter.getId() != null) query.where(desabafo.id.eq(filter.getId()));
 		if(filter.getTexto() != null && filter.getTexto() != "") {
-			query.where(desabafo.texto.eq(filter.getTexto()));
+			query.where(desabafo.texto.containsIgnoreCase(filter.getTexto()));
 		}
 		if(filter.getTopicoId() != null) query.where(desabafo.topicoId.eq(filter.getTopicoId()));
+		if(filter.getUserId() != null)   query.where(desabafo.userId.eq(filter.getUserId()));
 		if(filter.getUsuario() != null && filter.getUsuario() != "") {
 			query.where(desabafo.usuario.eq(filter.getUsuario()));
 		}
@@ -40,6 +41,8 @@ public class DesabafoRepositoryImpl implements DesabafoRepositoryCustom{
 			query.where(desabafo.dataAtualizacao.eq(filter.getDataAtualizacao()));
 		}
 		totalElements = query.fetchCount();
+		query.limit(pageable.getPageSize());
+		query.offset(pageable.getPageSize() * pageable.getPageNumber());
 		
 		return new PageImpl<Desabafo>(query.fetch(), pageable, totalElements);
 	}

@@ -35,6 +35,9 @@ public class Voto {
 	@Column(name = "fk_sugestao_id", nullable = false)
 	private BigInteger sugestaoId;
 	
+	@Column(name = "user_id", nullable = false)
+	private BigInteger userId;
+	
 	@Column(name = "usuario", nullable = false)
 	private String usuario;
 	

@@ -32,6 +32,9 @@ public class Comentario {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comentarios_sequence")
     private BigInteger id;
 	
+	@Column(name = "user_id", nullable = false)
+	private BigInteger userId;
+	
 	@Column(name = "usuario", nullable = false)
 	private String usuario;
 	

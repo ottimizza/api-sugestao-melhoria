@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +24,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "desabafos")
 @Builder
-@Getter @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Desabafo {
@@ -46,6 +47,9 @@ public class Desabafo {
 	@Column(name = "data_atualizacao")
 	private LocalDate dataAtualizacao;
 	
+	@Column(name = "user_id", nullable = false)
+	private BigInteger userId;
+
 	@Column(name = "usuario", nullable = false)
 	private String usuario;
 	

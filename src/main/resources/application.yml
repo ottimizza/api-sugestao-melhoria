@@ -1,0 +1,45 @@
+server:
+  servlet:
+    context-path: 
+  port: ${PORT:4000}
+
+spring:
+  datasource:
+    url: jdbc:postgresql://ec2-34-230-149-169.compute-1.amazonaws.com:5432/ddg06u14c8v78q
+    username: dsdtiijomvndgc
+    password: 926017aad7f194196a53dc49b0d759427aaf5e7160470e485c6e39631e6748cc
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: ${HIBERNATE_SHOW_SQL:false}
+    properties:
+      hibernate:
+        generate_statistics: ${HIBERNATE_STATISTICS:false}
+        temp:
+          use_jdbc_metadata_defaults: false
+
+oauth2-config:
+  client-id: ${CLIENT_ID:bussola-contabil-client}
+  client-secret: ${CLIENT_SECRET:bussola-contabil-secret}
+  server-url: ${OAUTH2_URL:https://development-oauth-server.herokuapp.com}
+
+oauth:
+  service:
+    name: oauth-service
+    url: ${OAUTH2_URL:https://development-oauth-server.herokuapp.com}
+    
+security:
+  oauth2:
+    client:
+      clientId: ${oauth2-config.client-id}
+      clientSecret: ${oauth2-config.client-secret}
+      accessTokenUri: ${oauth2-config.server-url}/oauth/token
+      userAuthorizationUri: ${oauth2-config.server-url}/oauth/authorize
+
+    resource:
+      userInfoUri: ${oauth2-config.server-url}/user/info
+      tokenInfoUri: ${oauth2-config.server-url}/oauth/check_token

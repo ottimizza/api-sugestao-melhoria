@@ -38,7 +38,7 @@ public class Desabafo {
 	@Column(name = "fk_topicos_id" , nullable = false)
 	private BigInteger topicoId;
 	
-	@Column(name = "texto", nullable = false)
+	@Column(name = "texto", nullable = false, length = 500)
 	private String texto;
 	
 	@Column(name = "data_criacao")

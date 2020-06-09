@@ -48,10 +48,10 @@ public class Sugestao {
 	@Column(name = "usuario", nullable = false)
 	private String usuario;
 	
-	@Column(name = "titulo", nullable = false)
+	@Column(name = "titulo", nullable = false, length = 255)
 	private String titulo;
 	
-	@Column(name = "descricao_sugestao", nullable = false)
+	@Column(name = "descricao_sugestao", nullable = false, length = 500)
 	private String descricaoSugestao;
 	
 	@Column(name = "problema_resolvido", nullable = false)

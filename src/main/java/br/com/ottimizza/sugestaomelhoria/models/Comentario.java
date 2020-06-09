@@ -47,7 +47,7 @@ public class Comentario {
 	@Column(name = "data_atualizacao")
 	private LocalDate dataAtualizacao;
 	
-	@Column(name = "texto", nullable = false)
+	@Column(name = "texto", nullable = false, length = 500)
 	private String texto;
 	
 	@PrePersist

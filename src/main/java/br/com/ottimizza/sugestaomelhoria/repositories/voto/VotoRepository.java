@@ -15,7 +15,7 @@ import br.com.ottimizza.sugestaomelhoria.models.Voto;
 @Repository
 public interface VotoRepository extends JpaRepository<Voto, BigInteger>, VotoRepositoryCustom{
 
-	
+	//NAO É UTILIZADO
 	 @Modifying
 	 @Transactional
 	 @Query("delete from Voto v where v.userId = :userId and v.id = :sugestaoId")

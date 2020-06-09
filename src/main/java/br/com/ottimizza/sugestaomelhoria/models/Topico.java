@@ -30,7 +30,7 @@ public class Topico {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "topicos_sequence")
 	private BigInteger id;
 	
-	@Column(name = "nome", nullable = false)
+	@Column(name = "nome", nullable = false, length = 255)
 	private String nome;
 	
 	@Column(name = "ativo",  columnDefinition = "boolean default true")

@@ -74,7 +74,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
     				sugestao.setDeuLike(false);
     				sugestao.setDeuDislike(false);
     			}
-    			}
+    		}
     	}catch(Exception ex) {
     		ex.getMessage();
     	}

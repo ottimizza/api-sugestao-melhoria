@@ -47,7 +47,7 @@ public class Voto {
 	@Column(name = "data_atualizacao")
 	private LocalDate dataAtualizacao;
 	
-	@Column(name = "comentario")
+	@Column(name = "comentario", length = 500)
 	private String comentario;
 	
 	@Column(name = "aprovado")

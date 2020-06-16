@@ -23,14 +23,14 @@ spring:
           use_jdbc_metadata_defaults: false
 
 oauth2-config:
-  client-id: ${CLIENT_ID:bussola-contabil-client}
-  client-secret: ${CLIENT_SECRET:bussola-contabil-secret}
+  client-id: ${OAUTH2_CLIENT_ID:bussola-contabil-client}
+  client-secret: ${OAUTH2_CLIENT_SECRET:bussola-contabil-secret}
   server-url: ${OAUTH2_URL:https://development-oauth-server.herokuapp.com}
 
 oauth:
   service:
     name: oauth-service
-    url: ${OAUTH2_URL:https://development-oauth-server.herokuapp.com}
+    url: ${OAUTH2_SERVER_URL:https://development-oauth-server.herokuapp.com}
     
 security:
   oauth2:

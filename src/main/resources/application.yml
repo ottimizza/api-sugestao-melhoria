@@ -25,7 +25,7 @@ spring:
 oauth2-config:
   client-id: ${OAUTH2_CLIENT_ID:bussola-contabil-client}
   client-secret: ${OAUTH2_CLIENT_SECRET:bussola-contabil-secret}
-  server-url: ${OAUTH2_URL:https://development-oauth-server.herokuapp.com}
+  server-url: ${OAUTH2_SERVER_URL:https://development-oauth-server.herokuapp.com}
 
 oauth:
   service:

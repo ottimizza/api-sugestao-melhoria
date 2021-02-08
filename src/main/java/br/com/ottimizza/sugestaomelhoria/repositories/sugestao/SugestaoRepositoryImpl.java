@@ -83,28 +83,39 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         
         if(filter.getId() != null)										
         	query.setParameter("id", filter.getId());
+        
         if(filter.getDataCriacao() != null)  
         	query.setParameter("dataCriacao", filter.getDataCriacao());
+        
         if(filter.getDataAtualizacao() != null)                      
         	query.setParameter("dataAtualizacao", filter.getDataAtualizacao());
+        
         if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
         	query.setParameter("usuario", filter.getUsuario());
+        
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  {
-        	query.setParameter("titulo", filter.getTitulo());
         	System.out.println("setando parametro titulo");
+        	query.setParameter("titulo", filter.getTitulo());
+        	
         }
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals("")) 
         	query.setParameter("descricaoSugestao", filter.getDescricaoSugestao());
+        
         if(filter.getProblemaResolvido() != null && !filter.getProblemaResolvido().equals("")) 
         	query.setParameter("problemaResolvido", filter.getProblemaResolvido());
+        
         if(filter.getStatus() != null)         
         	query.setParameter("status", filter.getStatus());
+        
         if(filter.getNumeroComentarios() != null)      
         	query.setParameter("numeroComentarios", filter.getNumeroComentarios());
-        if(filter.getNumeroLikes() != null)                 
+        
+        if(filter.getNumeroLikes() != null)           
         	query.setParameter("numeroLikes", filter.getNumeroLikes());
+        
         if(filter.getNumeroDislikes() != null)      
         	query.setParameter("numeroDislikes", filter.getNumeroDislikes());
+        
         if(filter.getLidaPorTareffa() != null)
         	query.setParameter("lidaPorTareffa", filter.getLidaPorTareffa());
         

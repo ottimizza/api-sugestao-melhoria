@@ -48,13 +48,13 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         if(filter.getDataAtualizacao() != null)                         
         	sql.append("AND s.data_atualizacao = :dataAtualizacao ");
         if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
-        	sql.append("AND s.usuario ILIKE('% :usuario %') ");
+        	sql.append("AND s.usuario ILIKE(%:usuario%) ");
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))    
-        	sql.append("AND s.titulo ILIKE('% :titulo %') ");
+        	sql.append("AND s.titulo ILIKE(%:tituloSugestao%) ");
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals(""))     
-        	sql.append("AND s.descricao_sugestao ILIKE('% :descricaoSugestao %') ");
+        	sql.append("AND s.descricao_sugestao ILIKE(%:descricaoSugestao%) ");
         if(filter.getProblemaResolvido() != null && !filter.getProblemaResolvido().equals(""))    
-        	sql.append("AND s.problema_resolvido ILIKE('%:problemaResolvido%') ");
+        	sql.append("AND s.problema_resolvido ILIKE(%:problemaResolvido%) ");
         if(filter.getStatus() != null)         
         	sql.append("AND s.status = :status ");
         if(filter.getNumeroComentarios() != null)      
@@ -95,7 +95,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  {
         	System.out.println("setando parametro titulo");
-        	query.setParameter("titulo", filter.getTitulo());
+        	query.setParameter("tituloSugestao", filter.getTitulo());
         	
         }
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals("")) 

@@ -24,6 +24,7 @@ public class SugestaoMapper {
 				.numeroLikes(sugestao.getNumeroLikes())
 				.numeroDislikes(sugestao.getNumeroDislikes())
 				.status(sugestao.getStatus())
+				.lidaPorTareffa(sugestao.getLidaPorTareffa())
 			.build();
 	}
 	
@@ -46,6 +47,7 @@ public class SugestaoMapper {
 				.numeroLikes(sugestao.getNumeroLikes())
 				.numeroDislikes(sugestao.getNumeroDislikes())
 				.status(sugestao.getStatus())
+				.lidaPorTareffa(sugestao.getLidaPorTareffa())
 			.build();
 	}
 }

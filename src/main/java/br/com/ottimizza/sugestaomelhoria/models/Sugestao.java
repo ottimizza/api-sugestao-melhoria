@@ -78,6 +78,9 @@ public class Sugestao {
 	@Column(name = "numero_dislikes")
 	private Short numeroDislikes;
 	
+	@Column(name = "lida_por_tareffa", columnDefinition = "boolean default false")
+	private Boolean lidaPorTareffa;
+	
 	public static class Status{
 		
 		public static final Short ABERTO = 1;
@@ -85,6 +88,8 @@ public class Sugestao {
 		public static final Short ARQUIVADO = 2;
 		
 		public static final Short APROVADO = 3;
+		
+		public static final Short RESOLVIDO = 4;
 	}
 	
 	@PrePersist

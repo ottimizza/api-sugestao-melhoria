@@ -89,8 +89,10 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	query.setParameter("dataAtualizacao", filter.getDataAtualizacao());
         if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
         	query.setParameter("usuario", filter.getUsuario());
-        if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  
+        if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  {
         	query.setParameter("titulo", filter.getTitulo());
+        	System.out.println("setando parametro titulo");
+        }
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals("")) 
         	query.setParameter("descricaoSugestao", filter.getDescricaoSugestao());
         if(filter.getProblemaResolvido() != null && !filter.getProblemaResolvido().equals("")) 

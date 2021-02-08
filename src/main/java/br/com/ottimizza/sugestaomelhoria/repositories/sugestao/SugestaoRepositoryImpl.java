@@ -48,7 +48,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         if(filter.getDataAtualizacao() != null)                         
         	sql.append("AND s.data_atualizacao = :dataAtualizacao ");
         if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
-        	sql.append("AND s.usuario ILIKE(% :usuario %) ");
+        	sql.append("AND s.usuario ILIKE(:usuario) ");
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))    
         	sql.append("AND s.titulo ILIKE(:titulo) ");
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals(""))     
@@ -74,8 +74,6 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	sql.append("ORDER BY s.numero_comentarios DESC ");
         else
         	sql.append("ORDER BY s.numero_likes DESC ");
-        
-        System.out.println(sql.toString());
         	
         Query query = em.createNativeQuery(sql.toString(), Sugestao.class);
 
@@ -91,7 +89,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	query.setParameter("dataAtualizacao", filter.getDataAtualizacao());
         
         if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
-        	query.setParameter("usuario", filter.getUsuario());
+        	query.setParameter("usuario", "%"+filter.getUsuario()+"%");
         
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  
         	query.setParameter("titulo", "%"+filter.getTitulo()+"%");

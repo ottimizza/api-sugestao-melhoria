@@ -74,6 +74,8 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	sql.append("ORDER BY s.numero_comentarios DESC ");
         else
         	sql.append("ORDER BY s.numero_likes DESC ");
+        
+        System.out.println(sql.toString());
         	
         Query query = em.createNativeQuery(sql.toString(), Sugestao.class);
 

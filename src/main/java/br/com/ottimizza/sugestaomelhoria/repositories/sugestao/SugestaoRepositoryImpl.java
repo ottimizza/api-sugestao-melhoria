@@ -76,6 +76,8 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	sql.append("ORDER BY s.numero_likes DESC ");
         	
         Query query = em.createNativeQuery(sql.toString(), Sugestao.class);
+
+        query.setParameter("topicoId", filter.getTopicoId());
         
         if(filter.getId() != null)										
         	query.setParameter("id", filter.getId());

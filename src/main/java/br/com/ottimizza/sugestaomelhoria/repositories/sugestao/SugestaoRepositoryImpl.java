@@ -50,7 +50,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
         	sql.append("AND s.usuario ILIKE(% :usuario %) ");
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))    
-        	sql.append("AND s.titulo ILIKE('% :titulo %') ");
+        	sql.append("AND s.titulo ILIKE(:titulo) ");
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals(""))     
         	sql.append("AND s.descricao_sugestao ILIKE(% :descricaoSugestao %) ");
         if(filter.getProblemaResolvido() != null && !filter.getProblemaResolvido().equals(""))    
@@ -94,7 +94,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	query.setParameter("usuario", filter.getUsuario());
         
         if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  
-        	query.setParameter("titulo", filter.getTitulo());
+        	query.setParameter("titulo", "%"+filter.getTitulo()+"%");
         
         if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals("")) 
         	query.setParameter("descricaoSugestao", filter.getDescricaoSugestao());

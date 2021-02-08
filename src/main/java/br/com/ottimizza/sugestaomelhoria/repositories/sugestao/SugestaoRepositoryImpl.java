@@ -66,11 +66,11 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         if(filter.getLidaPorTareffa() != null)
         	sql.append("AND s.lida_por_tareffa = :lidaPorTareffa ");
         
-        if(filter.getOrderBy() == 0)
+        if(filter.getOrderBy() != null && filter.getOrderBy() == 0)
         	sql.append("ORDER BY s.data_criacao DESC ");
-        else if(filter.getOrderBy() == 1)
+        else if(filter.getOrderBy() != null && filter.getOrderBy() == 1)
         	sql.append("ORDER BY s.data_atualizacao DESC ");
-        else if(filter.getOrderBy() == 2)
+        else if(filter.getOrderBy() != null && filter.getOrderBy() == 2)
         	sql.append("ORDER BY s.numero_comentarios DESC ");
         else
         	sql.append("ORDER BY s.numero_likes DESC ");

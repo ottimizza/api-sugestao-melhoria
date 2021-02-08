@@ -47,13 +47,13 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	sql.append("AND s.data_criacao = :dataCriacao ");
         if(filter.getDataAtualizacao() != null)                         
         	sql.append("AND s.data_atualizacao = :dataAtualizacao ");
-        if(filter.getUsuario() != null && filter.getUsuario() != "")   
-        	sql.append("AND s.usuario = :usuario ");
-        if(filter.getTitulo() != null && filter.getTitulo() != "")    
+        if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
+        	sql.append("AND s.usuario ILIKE('%:usuario%') ");
+        if(filter.getTitulo() != null && !filter.getTitulo().equals(""))    
         	sql.append("AND s.titulo ILIKE('%:titulo%') ");
-        if(filter.getDescricaoSugestao() != null)     
+        if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals(""))     
         	sql.append("AND s.descricao_sugestao ILIKE('%:descricaoSugestao%') ");
-        if(filter.getProblemaResolvido() != null)    
+        if(filter.getProblemaResolvido() != null && !filter.getProblemaResolvido().equals(""))    
         	sql.append("AND s.problema_resolvido ILIKE('%:problemaResolvido%') ");
         if(filter.getStatus() != null)         
         	sql.append("AND s.status = :status ");
@@ -85,13 +85,13 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         	query.setParameter("dataCriacao", filter.getDataCriacao());
         if(filter.getDataAtualizacao() != null)                      
         	query.setParameter("dataAtualizacao", filter.getDataAtualizacao());
-        if(filter.getUsuario() != null && filter.getUsuario() != "")   
+        if(filter.getUsuario() != null && !filter.getUsuario().equals(""))   
         	query.setParameter("usuario", filter.getUsuario());
-        if(filter.getTitulo() != null && filter.getTitulo() != "")  
+        if(filter.getTitulo() != null && !filter.getTitulo().equals(""))  
         	query.setParameter("titulo", filter.getTitulo());
-        if(filter.getDescricaoSugestao() != null)     
+        if(filter.getDescricaoSugestao() != null && !filter.getDescricaoSugestao().equals("")) 
         	query.setParameter("descricaoSugestao", filter.getDescricaoSugestao());
-        if(filter.getProblemaResolvido() != null)    
+        if(filter.getProblemaResolvido() != null && !filter.getProblemaResolvido().equals("")) 
         	query.setParameter("problemaResolvido", filter.getProblemaResolvido());
         if(filter.getStatus() != null)         
         	query.setParameter("status", filter.getStatus());

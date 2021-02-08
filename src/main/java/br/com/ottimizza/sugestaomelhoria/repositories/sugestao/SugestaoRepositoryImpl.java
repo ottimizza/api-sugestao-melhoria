@@ -38,7 +38,7 @@ public class SugestaoRepositoryImpl implements SugestaoRepositoryCustom {
         StringBuilder sql = new StringBuilder();
 		
         sql.append("SELECT s.* 				");
-        sql.append("FORM sugestoes s		");
+        sql.append("FROM sugestoes s		");
         sql.append("WHERE s.fk_topicos_id = :topicoId ");
         
 		if(filter.getId() != null)										

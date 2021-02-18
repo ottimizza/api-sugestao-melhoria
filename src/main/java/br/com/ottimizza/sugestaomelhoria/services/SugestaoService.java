@@ -25,6 +25,11 @@ public class SugestaoService {
     	Sugestao sugestao = SugestaoMapper.fromDto(sugestaoDto);
         return SugestaoMapper.fromEntity(repository.save(sugestao));
     }
+    
+    public SugestaoDTO patch(BigInteger id,SugestaoDTO sugestaoDto) throws Exception {
+    	Sugestao sugestao = sugestaoDto.patch(repository.findById(id).orElse(null));
+    	return (SugestaoMapper.fromEntity(repository.save(sugestao)));
+    }
 
     public Optional<Sugestao> buscaPorId(BigInteger sugestaoId) throws Exception{
         return repository.findById(sugestaoId);

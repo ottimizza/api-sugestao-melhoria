@@ -3,6 +3,7 @@ package br.com.ottimizza.sugestaomelhoria.domain.dtos;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
+import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -51,4 +52,23 @@ public class SugestaoDTO {
     private boolean deuLike;
     
     private boolean deuDislike;
+    
+    private Boolean lidaPorTareffa;
+
+    private Short orderBy;
+
+    public Sugestao patch(Sugestao sugestao) {
+    	
+    	if(status != null)
+    		sugestao.setStatus(status);
+    	
+    	if(titulo != null && !titulo.equals(""))
+    		sugestao.setTitulo(titulo);
+    	
+    	if(lidaPorTareffa != null)
+    		sugestao.setLidaPorTareffa(lidaPorTareffa);
+    	
+    	return sugestao;
+    }
+    
 }

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import br.com.ottimizza.sugestaomelhoria.domain.dtos.SugestaoDTO;
 import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
 import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
+import feign.Param;
 
 @RestController
 @RequestMapping("/api/sugestao")
@@ -32,7 +34,13 @@ public class SugestaoController {
     public ResponseEntity<?> saveSugestao(@RequestBody SugestaoDTO sugestao) throws Exception{
         return ResponseEntity.ok(sugestaoService.salva(sugestao));
     }   
-
+    
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> patchSugestao(@PathVariable BigInteger id,
+    									   @RequestBody SugestaoDTO sugestao) throws Exception {
+    	return ResponseEntity.ok(sugestaoService.patch(id, sugestao));
+    }
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletaSugestao(@PathVariable("id") BigInteger id) throws Exception{
         return ResponseEntity.ok(sugestaoService.deletaPorId(id).toString());

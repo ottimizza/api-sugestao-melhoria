@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ottimizza.sugestaomelhoria.domain.criterias.PageCriteria;
 import br.com.ottimizza.sugestaomelhoria.domain.dtos.ComentarioDTO;
-import br.com.ottimizza.sugestaomelhoria.domain.mappers.SugestaoMapper;
 import br.com.ottimizza.sugestaomelhoria.domain.responses.GenericPageableResponse;
 import br.com.ottimizza.sugestaomelhoria.models.Comentario;
-import br.com.ottimizza.sugestaomelhoria.models.Sugestao;
 import br.com.ottimizza.sugestaomelhoria.services.ComentarioService;
 import br.com.ottimizza.sugestaomelhoria.services.SugestaoService;
 
